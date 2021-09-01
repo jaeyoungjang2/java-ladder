@@ -14,13 +14,13 @@ public class Name {
 
     public Name(String stringName) {
         buildName(stringName);
-        participantNames.stream()
-                .forEach(this::checkValidName);
+        this.countOfPerson = participantNames.size();
     }
 
     private void buildName(String stringName) {
         this.participantNames = Arrays.asList(stringName.split(delimiter));
-        this.countOfPerson = participantNames.size();
+        participantNames.stream()
+                .forEach(this::checkValidName);
     }
 
     private void checkValidName(String name) {
