@@ -13,12 +13,15 @@ public class LadderApp {
 
         LadderGameManager ladderGameManager = new LadderGameManager(name);
         ladderGameManager.runGame(height.getValue(), ladder);
+        ladderGameManager.calResult(result);
 
         ResultView.printHeader();
         ResultView.printParticipant(name.getParticipantNames());
         ResultView.printLadderResult(ladder.getLines());
         ResultView.printResultColumn(result);
 
+        String target = InputView.requestTarget();
+        ResultView.printResultOfTarget(target, ladderGameManager.getLadderGames());
 
     }
 }
