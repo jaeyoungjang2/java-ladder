@@ -13,7 +13,7 @@ public class LadderApp {
         Ladder ladder = new Ladder(name.getCountOfPerson(), height.getValue());
 
         ResultView.printHeader();
-        ResultView.printParticipant(name.getParticipantNameList());
+        ResultView.printParticipant(name.getParticipantNames());
         ResultView.printLadderResult(ladder.getLines());
     }
 }

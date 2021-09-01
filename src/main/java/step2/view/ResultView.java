@@ -17,8 +17,8 @@ public class ResultView {
         System.out.println(GUIDE_HEAD_LINE);
     }
 
-    public static void printParticipant(List<String> participantNameList) {
-        participantNameList.stream()
+    public static void printParticipant(List<String> participantNames) {
+        participantNames.stream()
                 .map(s -> s + NAME_SPACE)
                 .forEach(System.out::print);
         System.out.println();
