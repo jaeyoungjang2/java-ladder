@@ -27,14 +27,14 @@ public class LadderGameManager {
         }
     }
 
-    private LadderGame moveStrategy(int testIndex, Line line, LadderGame ladderGame) {
-        if (testIndex - 1 >= 0 && testIndex - 1 < ladderGames.size() - 1 && line.getPoints().get(testIndex - 1)) {
-            return new LadderGame(testIndex - 1, ladderGame.getName());
+    private LadderGame moveStrategy(int index, Line line, LadderGame ladderGame) {
+        if (index - 1 >= 0 && index - 1 < ladderGames.size() - 1 && line.getPoints().get(index - 1)) {
+            return new LadderGame(index - 1, ladderGame.getName());
         }
-        if (testIndex >= 0 && testIndex < ladderGames.size() - 1 && line.getPoints().get(testIndex)) {
-            return new LadderGame(testIndex + 1, ladderGame.getName());
+        if (index >= 0 && index < ladderGames.size() - 1 && line.getPoints().get(index)) {
+            return new LadderGame(index + 1, ladderGame.getName());
         }
-        return new LadderGame(testIndex, ladderGame.getName());
+        return new LadderGame(index, ladderGame.getName());
     }
 
     private LadderGame gameByHeight(Line line, LadderGame ladderGame) {
