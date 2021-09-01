@@ -1,11 +1,10 @@
 package step2.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LadderGameManager {
-    private final List<LadderGame> ladderGames;
+    private List<LadderGame> ladderGames;
 
     public LadderGameManager(Name name) {
         ladderGames = name.getParticipantNames()
@@ -20,38 +19,26 @@ public class LadderGameManager {
 
     public void runGame(int value, Ladder ladder) {
         for (int i = 0; i < value; i++) {
-            for (int j = 0; j < ladderGames.size(); j++) {
-                int position = ladderGames.get(j).getPosition();
-                String name = ladderGames.get(j).getName();
-                if (position == 0) {
-                    if (ladder.getLines().get(i).getPoints().get(0)) {
-                        ladderGames.set(j, new LadderGame(1, ladderGames.get(j).getName()));
-                        continue;
-                    }
-                    ladderGames.set(j, new LadderGame(0, ladderGames.get(j).getName()));
-                    continue;
-                } else if (position == ladderGames.size() - 1) {
-                    if (ladder.getLines().get(i).getPoints().get(position - 1)) {
-                        ladderGames.set(j, new LadderGame(position - 1, ladderGames.get(j).getName()));
-                        continue;
-                    }
-                    ladderGames.set(j, new LadderGame(position, ladderGames.get(j).getName()));
-                    continue;
-                }
-                if (ladder.getLines().get(i).getPoints().get(position - 1)) {
-                    ladderGames.set(j, new LadderGame(position - 1, ladderGames.get(j).getName()));
-                    continue;
-                }
-                if (ladder.getLines().get(i).getPoints().get(position)) {
-                    ladderGames.set(j, new LadderGame(position + 1, ladderGames.get(j).getName()));
-                    continue;
-                }
-                ladderGames.set(j, new LadderGame(position, ladderGames.get(j).getName()));
-                continue;
-            }
+            Line line = ladder.getLines().get(i);
+            List<LadderGame> collect = ladderGames.stream()
+                    .map(ladderGame -> gameByHeight(line, ladderGame))
+                    .collect(Collectors.toList());
+            ladderGames = collect;
         }
+    }
 
+    private LadderGame moveStrategy(int testIndex, Line line, LadderGame ladderGame) {
+        if (testIndex - 1 >= 0 && testIndex - 1 < ladderGames.size() - 1 && line.getPoints().get(testIndex - 1)) {
+            return new LadderGame(testIndex - 1, ladderGame.getName());
+        }
+        if (testIndex >= 0 && testIndex < ladderGames.size() - 1 && line.getPoints().get(testIndex)) {
+            return new LadderGame(testIndex + 1, ladderGame.getName());
+        }
+        return new LadderGame(testIndex, ladderGame.getName());
+    }
 
+    private LadderGame gameByHeight(Line line, LadderGame ladderGame) {
+        return moveStrategy(ladderGame.getPosition(), line, ladderGame);
     }
 
     public void calResult(Result results) {
