@@ -1,5 +1,7 @@
 package step2.domain;
 
+import step2.view.InputView;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +27,8 @@ public class Name {
 
     private void CheckValidName(String name) {
         if (name.length() > NAME_MAX_SIZE || name.length() < NAME_MIN_SIZE) {
-            throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
+            InputView.printNameLengthErrorMessage();
+            InputView.requireNameOfParticipant();
         }
     }
 
