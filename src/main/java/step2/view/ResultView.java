@@ -4,9 +4,7 @@ import step2.domain.LadderGame;
 import step2.domain.Line;
 import step2.domain.Result;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -62,8 +60,8 @@ public class ResultView {
         }
         System.out.println("target");
         ladderGames.stream()
-                .filter(ladderGame -> ladderGame.name.equals(target))
-                .forEach(ladderGame -> System.out.println(ladderGame.name + " : " + ladderGame.result));
+                .filter(ladderGame -> ladderGame.getName().equals(target))
+                .forEach(ladderGame -> System.out.println(ladderGame.getName() + " : " + ladderGame.getResult()));
         return;
 
     }
@@ -71,7 +69,7 @@ public class ResultView {
     private static void printAllResult(List<LadderGame> ladderGames) {
         System.out.println("all");
         ladderGames.stream()
-                .map(ladderGame -> ladderGame.name + " : " + ladderGame.result)
+                .map(ladderGame -> ladderGame.getName() + " : " + ladderGame.getResult())
                 .forEach(System.out::println);
     }
 }

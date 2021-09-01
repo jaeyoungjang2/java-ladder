@@ -27,13 +27,13 @@ class LadderGameManagerTest {
         Name names = new Name("a,b,c,d");
         LadderGameManager ladderGameManager = new LadderGameManager(names);
         ladderGameManager.runGame(2, ladder);
-        System.out.println(ladderGameManager.getLadderGames().get(0).name);
-        System.out.println(ladderGameManager.getLadderGames().get(0).position);
-        System.out.println(ladderGameManager.getLadderGames().get(1).name);
-        System.out.println(ladderGameManager.getLadderGames().get(1).position);
-        System.out.println(ladderGameManager.getLadderGames().get(2).name);
-        System.out.println(ladderGameManager.getLadderGames().get(2).position);
-        System.out.println(ladderGameManager.getLadderGames().get(3).name);
-        System.out.println(ladderGameManager.getLadderGames().get(3).position);
+        System.out.println(ladderGameManager.getLadderGames().get(0).getName());
+        System.out.println(ladderGameManager.getLadderGames().get(0).getPosition());
+        System.out.println(ladderGameManager.getLadderGames().get(1).getName());
+        System.out.println(ladderGameManager.getLadderGames().get(1).getPosition());
+        System.out.println(ladderGameManager.getLadderGames().get(2).getName());
+        System.out.println(ladderGameManager.getLadderGames().get(2).getPosition());
+        System.out.println(ladderGameManager.getLadderGames().get(3).getName());
+        System.out.println(ladderGameManager.getLadderGames().get(3).getPosition());
     }
 }
