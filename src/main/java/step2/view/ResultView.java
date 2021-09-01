@@ -1,6 +1,7 @@
 package step2.view;
 
 import step2.domain.Line;
+import step2.domain.Result;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,5 +43,12 @@ public class ResultView {
             return LADDER_HORIZON;
         }
         return LADDER_EMPTY;
+    }
+
+    public static void printResultColumn(Result result) {
+        result.getStrings()
+                .stream()
+                .map(s -> s + NAME_SPACE)
+                .forEach(System.out::println);
     }
 }
