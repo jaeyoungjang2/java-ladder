@@ -15,12 +15,12 @@ public class Name {
     private int countOfPerson;
 
     public Name(String stringName) {
-        BuildName(stringName);
+        buildName(stringName);
         participantNameList.stream()
                 .forEach(this::CheckValidName);
     }
 
-    private void BuildName(String stringName) {
+    private void buildName(String stringName) {
         this.participantNameList = Arrays.asList(stringName.split(delimiter));
         this.countOfPerson = participantNameList.size();
     }
