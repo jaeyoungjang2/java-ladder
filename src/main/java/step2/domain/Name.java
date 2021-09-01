@@ -15,7 +15,7 @@ public class Name {
     public Name(String stringName) {
         buildName(stringName);
         participantNames.stream()
-                .forEach(this::CheckValidName);
+                .forEach(this::checkValidName);
     }
 
     private void buildName(String stringName) {
@@ -23,7 +23,7 @@ public class Name {
         this.countOfPerson = participantNames.size();
     }
 
-    private void CheckValidName(String name) {
+    private void checkValidName(String name) {
         if (name.length() > NAME_MAX_SIZE || name.length() < NAME_MIN_SIZE) {
             InputView.printNameLengthErrorMessage();
             InputView.requireNameOfParticipant();
