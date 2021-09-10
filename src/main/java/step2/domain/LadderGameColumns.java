@@ -50,18 +50,6 @@ public class LadderGameColumns {
         return index - 1 >= 0 && line.getPoints().get(index - 1);
     }
 
-    public void calculateResult(Results results) {
-        ladderGameColumns.stream()
-                .map(ladderGameColumn -> addResultInToLadderGameColumns(ladderGameColumn, results))
-                .collect(Collectors.toList());
-    }
-
-    private LadderGameColumn addResultInToLadderGameColumns(LadderGameColumn ladderGameColumn, Results results) {
-        int position = ladderGameColumn.getPosition();
-        String result = results.resultOfPosition(position);
-        return ladderGameColumn;
-    }
-
     public List<LadderGameColumn> getLadderGameList() {
         return ladderGameColumns;
     }

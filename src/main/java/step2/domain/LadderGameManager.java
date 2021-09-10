@@ -17,6 +17,5 @@ public class LadderGameManager {
 
     public void runGame(int height, Ladder ladder) {
         ladderGameColumns.runLadder(height, ladder);
-        ladderGameColumns.calculateResult(results);
     }
 }
